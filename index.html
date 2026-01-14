@@ -53,16 +53,6 @@ nav a:hover{color:#3b82f6;}
   color:#fff;
 }
 
-.hero h2{font-size:36px;}
-.hero p{font-size:18px;}
-
-/* SECTION */
-.section{
-  max-width:1200px;
-  margin:60px auto;
-  padding:0 20px;
-}
-
 /* CONTAINER */
 .container{
   display:flex;
@@ -79,12 +69,6 @@ nav a:hover{color:#3b82f6;}
   color:#fff;
   padding:20px;
   border-radius:10px;
-}
-
-.sidebar h3{
-  margin-bottom:15px;
-  border-bottom:2px solid #3b82f6;
-  padding-bottom:5px;
 }
 
 .sidebar a{
@@ -116,6 +100,20 @@ nav a:hover{color:#3b82f6;}
   border-radius:10px;
   box-shadow:0 2px 8px rgba(0,0,0,.1);
   text-align:center;
+}
+
+.product h4{
+  margin-bottom:10px;
+}
+
+.order-btn{
+  display:inline-block;
+  margin-top:10px;
+  background:#25D366;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  text-decoration:none;
   font-weight:bold;
 }
 
@@ -128,17 +126,34 @@ footer{
   margin-top:80px;
 }
 
-/* WHATSAPP */
-.whatsapp{
+/* FLOATING BUTTONS */
+.whatsapp, .tiktok{
   position:fixed;
-  bottom:20px;
   right:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 20px;
-  border-radius:30px;
+  padding:14px;
+  border-radius:50%;
   text-decoration:none;
-  font-weight:bold;
+  color:#fff;
+  font-size:22px;
+  animation:bounce 2s infinite;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+}
+
+.whatsapp{
+  bottom:20px;
+  background:#25D366;
+}
+
+.tiktok{
+  bottom:90px;
+  background:#000;
+}
+
+/* BOUNCE */
+@keyframes bounce{
+  0%,20%,50%,80%,100%{transform:translateY(0);}
+  40%{transform:translateY(-12px);}
+  60%{transform:translateY(-6px);}
 }
 
 /* MOBILE */
@@ -156,6 +171,7 @@ footer{
   <nav>
     <a href="#">Home</a>
     <a href="#products">Shop</a>
+    <a href="https://www.tiktok.com/@wwwkpfc.com0" target="_blank">TikTok</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -174,26 +190,36 @@ footer{
     <a href="#" onclick="showCategory('power')">Power Tools</a>
     <a href="#" onclick="showCategory('roofing')">Roofing Materials</a>
     <a href="#" onclick="showCategory('water')">Water Tanks & Steel Bars</a>
-    <a href="#" onclick="showCategory('fencing')">Fencing Materials</a>
   </div>
 
   <div class="products">
     <h2 id="products-title">Our Products</h2>
     <div class="products-grid" id="products-grid">
-      <div class="product">Select a category to view products</div>
+      <div class="product">Select a category</div>
     </div>
   </div>
 
 </div>
 
 <footer id="contact">
-  <p>📍 Kikuyu Town | 📞 0108 139 289</p>
+  <p>📍 Naivasha Town | 📞 0108 139 289</p>
   <p>&copy; 2025 KPFC Builders Hardware</p>
 </footer>
 
-<a href="https://wa.me/254108139289" class="whatsapp">💬 WhatsApp Us</a>
+<!-- FLOATING ICONS -->
+<a class="whatsapp" href="https://wa.me/254108139289" target="_blank">💬</a>
+<a class="tiktok" href="https://www.tiktok.com/@wwwkpfc.com0" target="_blank">🎵</a>
 
 <script>
+const phone="254108139289";
+
+function orderBtn(name,price){
+  return `
+  <a class="order-btn"
+  href="https://wa.me/${phone}?text=Hello KPFC,%20I%20want%20to%20order:%20${name}%20-%20${price}"
+  target="_blank">Order Now</a>`;
+}
+
 function showCategory(cat){
   const t=document.getElementById("products-title");
   const g=document.getElementById("products-grid");
@@ -201,68 +227,18 @@ function showCategory(cat){
   if(cat==="cement"){
     t.innerText="Cement & Aggregates";
     g.innerHTML=`
-    <div class="product">Blue Triangle Cement – 750</div>
-    <div class="product">Simba Cement – 650</div>
-    <div class="product">Bamburi Cement – 700</div>
-    <div class="product">Ngulu Cement – 550</div>
-    <div class="product">Sand (1 Tonne) – 1500</div>
-    <div class="product">Ballast (1 Tonne) – 2000</div>`;
-  }
-
-  if(cat==="tools"){
-    t.innerText="Hardware Tools";
-    g.innerHTML=`
-    <div class="product">Roofing Nails 1kg – 160</div>
-    <div class="product">Wire Mesh 8×4 – 1500</div>
-    <div class="product">Block Board 8×4 – 2500</div>
-    <div class="product">Toilet Bowl – 3500</div>
-    <div class="product">Shower Head – 1000</div>
-    <div class="product">Wheelbarrow – 3500</div>
-    <div class="product">Shovel – 350</div>
-    <div class="product">Pickaxe – 450</div>
-    <div class="product">Ladder 6ft – 3500</div>`;
-  }
-
-  if(cat==="power"){
-    t.innerText="Power Tools";
-    g.innerHTML=`
-    <div class="product">Angle Grinder – 10000</div>
-    <div class="product">Cordless Drill – 9500</div>
-    <div class="product">Circular Saw – 6000</div>
-    <div class="product">Demolition Breaker – 24500</div>
-    <div class="product">Chainsaw – 23000</div>`;
-  }
-
-  if(cat==="roofing"){
-    t.innerText="Roofing Materials";
-    g.innerHTML=`
-    <div class="product">Deformed Bar 8mm – 550</div>
-    <div class="product">Deformed Bar 10mm – 800</div>
-    <div class="product">Deformed Bar 12mm – 1050</div>
-    <div class="product">MDF Board 8×4 – 2400</div>
-    <div class="product">Laminated Door – 8500</div>
-    <div class="product">Mabati Gauge 30 – 900</div>`;
+    <div class="product"><h4>Bamburi Cement – KSH 700</h4>${orderBtn("Bamburi Cement","KSH 700")}</div>
+    <div class="product"><h4>Simba Cement – KSH 650</h4>${orderBtn("Simba Cement","KSH 650")}</div>
+    <div class="product"><h4>Sand (1 Tonne) – KSH 1,500</h4>${orderBtn("Sand 1 Tonne","KSH 1,500")}</div>
+    <div class="product"><h4>Ballast (1 Tonne) – KSH 2,000</h4>${orderBtn("Ballast 1 Tonne","KSH 2,000")}</div>`;
   }
 
   if(cat==="water"){
     t.innerText="Water Tanks & Steel Bars";
     g.innerHTML=`
-    <div class="product">Water Tank 1000L – 4500</div>
-    <div class="product">Water Tank 3000L – 14500</div>
-    <div class="product">Water Tank 5000L – 24500</div>
-    <div class="product">Steel Bar D8 – 450</div>
-    <div class="product">Steel Bar D16 – 1500</div>
-    <div class="product">Steel Bar D32 – 7300</div>`;
-  }
-
-  if(cat==="fencing"){
-    t.innerText="Fencing Materials";
-    g.innerHTML=`
-    <div class="product">Plastic Poles 3×7ft – 750</div>
-    <div class="product">Plastic Poles 4×10ft – 1550</div>
-    <div class="product">Barbed Wire 240m – 1900</div>
-    <div class="product">Chain Link 6ft – 5000</div>
-    <div class="product">Fencing Pole 10ft – 600</div>`;
+    <div class="product"><h4>Water Tank 1000L – KSH 4,500</h4>${orderBtn("Water Tank 1000L","KSH 4,500")}</div>
+    <div class="product"><h4>Water Tank 5000L – KSH 24,500</h4>${orderBtn("Water Tank 5000L","KSH 24,500")}</div>
+    <div class="product"><h4>Steel Bar D16 – KSH 1,500</h4>${orderBtn("Steel Bar D16","KSH 1,500")}</div>`;
   }
 }
 </script>

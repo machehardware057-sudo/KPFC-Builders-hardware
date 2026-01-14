@@ -31,7 +31,15 @@ header{
   z-index:100;
 }
 
-header h1{font-size:20px;}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  height:40px;
+}
 
 nav a{
   color:#fff;
@@ -48,7 +56,7 @@ nav a:hover{color:#3b82f6;}
   url("https://images.unsplash.com/photo-1603791452906-c5ab4c0b1b1a");
   background-size:cover;
   background-position:center;
-  padding:100px 20px;
+  padding:90px 20px;
   text-align:center;
   color:#fff;
 }
@@ -96,25 +104,22 @@ nav a:hover{color:#3b82f6;}
 
 .product{
   background:#f9fafb;
-  padding:20px;
+  padding:15px;
   border-radius:10px;
   box-shadow:0 2px 8px rgba(0,0,0,.1);
   text-align:center;
 }
 
-.product h4{
-  margin-bottom:10px;
-}
-
 .order-btn{
   display:inline-block;
-  margin-top:10px;
+  margin-top:8px;
   background:#25D366;
   color:#fff;
-  padding:8px 14px;
+  padding:6px 14px;
   border-radius:20px;
   text-decoration:none;
   font-weight:bold;
+  font-size:14px;
 }
 
 /* FOOTER */
@@ -126,30 +131,22 @@ footer{
   margin-top:80px;
 }
 
-/* FLOATING BUTTONS */
+/* FLOATING ICONS */
 .whatsapp, .tiktok{
   position:fixed;
   right:20px;
   padding:14px;
   border-radius:50%;
-  text-decoration:none;
   color:#fff;
+  text-decoration:none;
   font-size:22px;
   animation:bounce 2s infinite;
   box-shadow:0 4px 12px rgba(0,0,0,.3);
 }
 
-.whatsapp{
-  bottom:20px;
-  background:#25D366;
-}
+.whatsapp{bottom:20px;background:#25D366;}
+.tiktok{bottom:90px;background:#000;}
 
-.tiktok{
-  bottom:90px;
-  background:#000;
-}
-
-/* BOUNCE */
 @keyframes bounce{
   0%,20%,50%,80%,100%{transform:translateY(0);}
   40%{transform:translateY(-12px);}
@@ -167,7 +164,10 @@ footer{
 <body>
 
 <header>
-  <h1>KPFC Builders Hardware</h1>
+  <div class="logo">
+    <img src="logo.png" alt="KPFC Logo">
+    <h2>KPFC Builders Hardware</h2>
+  </div>
   <nav>
     <a href="#">Home</a>
     <a href="#products">Shop</a>
@@ -190,12 +190,13 @@ footer{
     <a href="#" onclick="showCategory('power')">Power Tools</a>
     <a href="#" onclick="showCategory('roofing')">Roofing Materials</a>
     <a href="#" onclick="showCategory('water')">Water Tanks & Steel Bars</a>
+    <a href="#" onclick="showCategory('fencing')">Fencing Materials</a>
   </div>
 
   <div class="products">
     <h2 id="products-title">Our Products</h2>
     <div class="products-grid" id="products-grid">
-      <div class="product">Select a category</div>
+      <div class="product">Select a category to view products</div>
     </div>
   </div>
 
@@ -206,18 +207,14 @@ footer{
   <p>&copy; 2025 KPFC Builders Hardware</p>
 </footer>
 
-<!-- FLOATING ICONS -->
 <a class="whatsapp" href="https://wa.me/254108139289" target="_blank">💬</a>
 <a class="tiktok" href="https://www.tiktok.com/@wwwkpfc.com0" target="_blank">🎵</a>
 
 <script>
 const phone="254108139289";
 
-function orderBtn(name,price){
-  return `
-  <a class="order-btn"
-  href="https://wa.me/${phone}?text=Hello KPFC,%20I%20want%20to%20order:%20${name}%20-%20${price}"
-  target="_blank">Order Now</a>`;
+function order(name,price){
+  return `<a class="order-btn" href="https://wa.me/${phone}?text=Hello KPFC, I want to order ${name} - ${price}" target="_blank">Order Now</a>`;
 }
 
 function showCategory(cat){
@@ -227,18 +224,20 @@ function showCategory(cat){
   if(cat==="cement"){
     t.innerText="Cement & Aggregates";
     g.innerHTML=`
-    <div class="product"><h4>Bamburi Cement – KSH 700</h4>${orderBtn("Bamburi Cement","KSH 700")}</div>
-    <div class="product"><h4>Simba Cement – KSH 650</h4>${orderBtn("Simba Cement","KSH 650")}</div>
-    <div class="product"><h4>Sand (1 Tonne) – KSH 1,500</h4>${orderBtn("Sand 1 Tonne","KSH 1,500")}</div>
-    <div class="product"><h4>Ballast (1 Tonne) – KSH 2,000</h4>${orderBtn("Ballast 1 Tonne","KSH 2,000")}</div>`;
+    <div class="product">Blue Triangle Cement – KSH 750 ${order("Blue Triangle Cement","KSH 750")}</div>
+    <div class="product">Simba Cement – KSH 650 ${order("Simba Cement","KSH 650")}</div>
+    <div class="product">Bamburi Cement – KSH 700 ${order("Bamburi Cement","KSH 700")}</div>
+    <div class="product">Ngulu Cement – KSH 550 ${order("Ngulu Cement","KSH 550")}</div>
+    <div class="product">Sand (1 Tonne) – KSH 1,500 ${order("Sand 1 Tonne","KSH 1,500")}</div>
+    <div class="product">Ballast (1 Tonne) – KSH 2,000 ${order("Ballast 1 Tonne","KSH 2,000")}</div>`;
   }
 
-  if(cat==="water"){
-    t.innerText="Water Tanks & Steel Bars";
+  if(cat==="power"){
+    t.innerText="Power Tools";
     g.innerHTML=`
-    <div class="product"><h4>Water Tank 1000L – KSH 4,500</h4>${orderBtn("Water Tank 1000L","KSH 4,500")}</div>
-    <div class="product"><h4>Water Tank 5000L – KSH 24,500</h4>${orderBtn("Water Tank 5000L","KSH 24,500")}</div>
-    <div class="product"><h4>Steel Bar D16 – KSH 1,500</h4>${orderBtn("Steel Bar D16","KSH 1,500")}</div>`;
+    <div class="product">Angle Grinder – KSH 10,000 ${order("Angle Grinder","KSH 10,000")}</div>
+    <div class="product">Cordless Drill – KSH 9,500 ${order("Cordless Drill","KSH 9,500")}</div>
+    <div class="product">Circular Saw – KSH 6,000 ${order("Circular Saw","KSH 6,000")}</div>`;
   }
 }
 </script>

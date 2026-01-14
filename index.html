@@ -31,9 +31,7 @@ header{
   z-index:100;
 }
 
-header h1{
-  font-size:20px;
-}
+header h1{font-size:20px;}
 
 nav a{
   color:#fff;
@@ -42,9 +40,7 @@ nav a{
   font-weight:bold;
 }
 
-nav a:hover{
-  color:#3b82f6;
-}
+nav a:hover{color:#3b82f6;}
 
 /* HERO */
 .hero{
@@ -57,25 +53,14 @@ nav a:hover{
   color:#fff;
 }
 
-.hero h2{
-  font-size:36px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  font-size:18px;
-}
+.hero h2{font-size:36px;}
+.hero p{font-size:18px;}
 
 /* SECTION */
 .section{
   max-width:1200px;
   margin:60px auto;
   padding:0 20px;
-}
-
-.section h2{
-  color:#1f2937;
-  margin-bottom:15px;
 }
 
 /* CONTAINER */
@@ -109,9 +94,7 @@ nav a:hover{
   padding:8px 0;
 }
 
-.sidebar a:hover{
-  color:#3b82f6;
-}
+.sidebar a:hover{color:#3b82f6;}
 
 /* PRODUCTS */
 .products{
@@ -119,10 +102,6 @@ nav a:hover{
   background:#fff;
   padding:25px;
   border-radius:10px;
-}
-
-.products h2{
-  margin-bottom:20px;
 }
 
 .products-grid{
@@ -137,20 +116,7 @@ nav a:hover{
   border-radius:10px;
   box-shadow:0 2px 8px rgba(0,0,0,.1);
   text-align:center;
-}
-
-/* EXTRA SECTIONS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#fff;
-  padding:25px;
-  border-radius:10px;
-  box-shadow:0 2px 8px rgba(0,0,0,.1);
+  font-weight:bold;
 }
 
 /* FOOTER */
@@ -162,7 +128,7 @@ footer{
   margin-top:80px;
 }
 
-/* WHATSAPP BOUNCE */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -173,24 +139,12 @@ footer{
   border-radius:30px;
   text-decoration:none;
   font-weight:bold;
-  animation:bounce 2s infinite;
-  box-shadow:0 4px 12px rgba(0,0,0,.3);
-}
-
-@keyframes bounce{
-  0%,20%,50%,80%,100%{transform:translateY(0);}
-  40%{transform:translateY(-10px);}
-  60%{transform:translateY(-5px);}
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  .container{
-    flex-direction:column;
-  }
-  .sidebar{
-    width:100%;
-  }
+  .container{flex-direction:column;}
+  .sidebar{width:100%;}
 }
 </style>
 </head>
@@ -201,7 +155,7 @@ footer{
   <h1>KPFC Builders Hardware</h1>
   <nav>
     <a href="#">Home</a>
-    <a href="#products-top">Shop</a>
+    <a href="#products">Shop</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -211,47 +165,26 @@ footer{
   <p>Quality building materials • Wholesale & Retail</p>
 </section>
 
-<section class="section">
-  <h2>Why Choose KPFC Builders Hardware</h2>
-  <div class="cards">
-    <div class="card">✔ Genuine building materials</div>
-    <div class="card">✔ Affordable prices</div>
-    <div class="card">✔ Fast delivery</div>
-    <div class="card">✔ Trusted by contractors</div>
-  </div>
-</section>
-
-<div class="container">
+<div class="container" id="products">
 
   <div class="sidebar">
-    <h3>Product Categories</h3>
-    <a href="#" onclick="showCategory('pipes')">Pipes & Fittings</a>
+    <h3>Categories</h3>
     <a href="#" onclick="showCategory('cement')">Cement & Aggregates</a>
     <a href="#" onclick="showCategory('tools')">Hardware Tools</a>
     <a href="#" onclick="showCategory('power')">Power Tools</a>
     <a href="#" onclick="showCategory('roofing')">Roofing Materials</a>
+    <a href="#" onclick="showCategory('water')">Water Tanks & Steel Bars</a>
+    <a href="#" onclick="showCategory('fencing')">Fencing Materials</a>
   </div>
 
-  <div class="products" id="products-top">
+  <div class="products">
     <h2 id="products-title">Our Products</h2>
     <div class="products-grid" id="products-grid">
-      <div class="product">
-        <h3>Welcome</h3>
-        <p>Select a category to view products</p>
-      </div>
+      <div class="product">Select a category to view products</div>
     </div>
   </div>
 
 </div>
-
-<section class="section">
-  <h2>Delivery & Services</h2>
-  <div class="cards">
-    <div class="card">🚚 Same-day delivery available</div>
-    <div class="card">🏗 Bulk supply for projects</div>
-    <div class="card">📞 Expert advice</div>
-  </div>
-</section>
 
 <footer id="contact">
   <p>📍 Kikuyu Town | 📞 0108 139 289</p>
@@ -261,43 +194,75 @@ footer{
 <a href="https://wa.me/254108139289" class="whatsapp">💬 WhatsApp Us</a>
 
 <script>
-function showCategory(category){
-  document.getElementById("products-top").scrollIntoView({behavior:"smooth"});
-  const title = document.getElementById("products-title");
-  const grid = document.getElementById("products-grid");
+function showCategory(cat){
+  const t=document.getElementById("products-title");
+  const g=document.getElementById("products-grid");
 
-  if(category==="pipes"){
-    title.innerText="Pipes & Fittings";
-    grid.innerHTML=`
-    <div class="product">PVC Pipes</div>
-    <div class="product">HDPE Pipes</div>
-    <div class="product">Water Fittings</div>`;
+  if(cat==="cement"){
+    t.innerText="Cement & Aggregates";
+    g.innerHTML=`
+    <div class="product">Blue Triangle Cement – 750</div>
+    <div class="product">Simba Cement – 650</div>
+    <div class="product">Bamburi Cement – 700</div>
+    <div class="product">Ngulu Cement – 550</div>
+    <div class="product">Sand (1 Tonne) – 1500</div>
+    <div class="product">Ballast (1 Tonne) – 2000</div>`;
   }
-  if(category==="cement"){
-    title.innerText="Cement & Aggregates";
-    grid.innerHTML=`
-    <div class="product">Bamburi Cement</div>
-    <div class="product">Sand</div>
-    <div class="product">Ballast</div>`;
+
+  if(cat==="tools"){
+    t.innerText="Hardware Tools";
+    g.innerHTML=`
+    <div class="product">Roofing Nails 1kg – 160</div>
+    <div class="product">Wire Mesh 8×4 – 1500</div>
+    <div class="product">Block Board 8×4 – 2500</div>
+    <div class="product">Toilet Bowl – 3500</div>
+    <div class="product">Shower Head – 1000</div>
+    <div class="product">Wheelbarrow – 3500</div>
+    <div class="product">Shovel – 350</div>
+    <div class="product">Pickaxe – 450</div>
+    <div class="product">Ladder 6ft – 3500</div>`;
   }
-  if(category==="tools"){
-    title.innerText="Hardware Tools";
-    grid.innerHTML=`
-    <div class="product">Hammers</div>
-    <div class="product">Spanners</div>
-    <div class="product">Saws</div>`;
+
+  if(cat==="power"){
+    t.innerText="Power Tools";
+    g.innerHTML=`
+    <div class="product">Angle Grinder – 10000</div>
+    <div class="product">Cordless Drill – 9500</div>
+    <div class="product">Circular Saw – 6000</div>
+    <div class="product">Demolition Breaker – 24500</div>
+    <div class="product">Chainsaw – 23000</div>`;
   }
-  if(category==="power"){
-    title.innerText="Power Tools";
-    grid.innerHTML=`
-    <div class="product">Drilling Machine</div>
-    <div class="product">Grinder</div>`;
+
+  if(cat==="roofing"){
+    t.innerText="Roofing Materials";
+    g.innerHTML=`
+    <div class="product">Deformed Bar 8mm – 550</div>
+    <div class="product">Deformed Bar 10mm – 800</div>
+    <div class="product">Deformed Bar 12mm – 1050</div>
+    <div class="product">MDF Board 8×4 – 2400</div>
+    <div class="product">Laminated Door – 8500</div>
+    <div class="product">Mabati Gauge 30 – 900</div>`;
   }
-  if(category==="roofing"){
-    title.innerText="Roofing Materials";
-    grid.innerHTML=`
-    <div class="product">Mabati Sheets</div>
-    <div class="product">Ridges</div>`;
+
+  if(cat==="water"){
+    t.innerText="Water Tanks & Steel Bars";
+    g.innerHTML=`
+    <div class="product">Water Tank 1000L – 4500</div>
+    <div class="product">Water Tank 3000L – 14500</div>
+    <div class="product">Water Tank 5000L – 24500</div>
+    <div class="product">Steel Bar D8 – 450</div>
+    <div class="product">Steel Bar D16 – 1500</div>
+    <div class="product">Steel Bar D32 – 7300</div>`;
+  }
+
+  if(cat==="fencing"){
+    t.innerText="Fencing Materials";
+    g.innerHTML=`
+    <div class="product">Plastic Poles 3×7ft – 750</div>
+    <div class="product">Plastic Poles 4×10ft – 1550</div>
+    <div class="product">Barbed Wire 240m – 1900</div>
+    <div class="product">Chain Link 6ft – 5000</div>
+    <div class="product">Fencing Pole 10ft – 600</div>`;
   }
 }
 </script>

@@ -132,7 +132,7 @@ footer{
 }
 
 /* FLOATING ICONS */
-.whatsapp, .tiktok{
+.whatsapp, .tiktok, .maps{
   position:fixed;
   right:20px;
   padding:14px;
@@ -146,6 +146,7 @@ footer{
 
 .whatsapp{bottom:20px;background:#25D366;}
 .tiktok{bottom:90px;background:#000;}
+.maps{bottom:160px;background:#e11d48;}
 
 @keyframes bounce{
   0%,20%,50%,80%,100%{transform:translateY(0);}
@@ -171,7 +172,6 @@ footer{
   <nav>
     <a href="#">Home</a>
     <a href="#products">Shop</a>
-    <a href="https://www.tiktok.com/@wwwkpfc.com0" target="_blank">TikTok</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -185,11 +185,10 @@ footer{
 
   <div class="sidebar">
     <h3>Categories</h3>
-    <a href="#" onclick="showCategory('cement')">Cement & Aggregates</a>
-    <a href="#" onclick="showCategory('tools')">Hardware Tools</a>
+    <a href="#" onclick="showCategory('cement')">Cement & Aggregate</a>
+    <a href="#" onclick="showCategory('tools')">Hardware Items</a>
+    <a href="#" onclick="showCategory('roofing')">Roofing Material</a>
     <a href="#" onclick="showCategory('power')">Power Tools</a>
-    <a href="#" onclick="showCategory('roofing')">Roofing Materials</a>
-    <a href="#" onclick="showCategory('water')">Water Tanks & Steel Bars</a>
     <a href="#" onclick="showCategory('fencing')">Fencing Materials</a>
   </div>
 
@@ -207,14 +206,16 @@ footer{
   <p>&copy; 2025 KPFC Builders Hardware</p>
 </footer>
 
+<!-- FLOATING ICONS -->
 <a class="whatsapp" href="https://wa.me/254108139289" target="_blank">💬</a>
 <a class="tiktok" href="https://www.tiktok.com/@wwwkpfc.com0" target="_blank">🎵</a>
+<a class="maps" href="https://www.google.com/maps/search/?api=1&query=Naivasha+Town" target="_blank">📍</a>
 
 <script>
 const phone="254108139289";
 
-function order(name,price){
-  return `<a class="order-btn" href="https://wa.me/${phone}?text=Hello KPFC, I want to order ${name} - ${price}" target="_blank">Order Now</a>`;
+function order(item,price){
+  return `<br><a class="order-btn" href="https://wa.me/${phone}?text=Hello KPFC, I want to order ${item} – ${price}" target="_blank">Order Now</a>`;
 }
 
 function showCategory(cat){
@@ -222,7 +223,7 @@ function showCategory(cat){
   const g=document.getElementById("products-grid");
 
   if(cat==="cement"){
-    t.innerText="Cement & Aggregates";
+    t.innerText="Cement & Aggregate";
     g.innerHTML=`
     <div class="product">Blue Triangle Cement – KSH 750 ${order("Blue Triangle Cement","KSH 750")}</div>
     <div class="product">Simba Cement – KSH 650 ${order("Simba Cement","KSH 650")}</div>
@@ -232,12 +233,87 @@ function showCategory(cat){
     <div class="product">Ballast (1 Tonne) – KSH 2,000 ${order("Ballast 1 Tonne","KSH 2,000")}</div>`;
   }
 
+  if(cat==="tools"){
+    t.innerText="Hardware Items";
+    g.innerHTML=`
+    <div class="product">Roofing Nails 1kg – KSH 160 ${order("Roofing Nails 1kg","KSH 160")}</div>
+    <div class="product">Wire Mesh 8×4 ft – KSH 1,500 ${order("Wire Mesh 8x4 ft","KSH 1,500")}</div>
+    <div class="product">Block Board 8×4 ft – KSH 2,500 ${order("Block Board 8x4 ft","KSH 2,500")}</div>
+    <div class="product">Basin Ceramic White – KSH 2,500 ${order("Basin Ceramic White","KSH 2,500")}</div>
+    <div class="product">Toilet Bowl Standard – KSH 3,500 ${order("Toilet Bowl Standard","KSH 3,500")}</div>
+    <div class="product">Shower Head Chrome – KSH 1,000 ${order("Shower Head Chrome","KSH 1,000")}</div>
+    <div class="product">Tap Mixer Kitchen – KSH 1,200 ${order("Tap Mixer Kitchen","KSH 1,200")}</div>
+    <div class="product">Tap Basin Single – KSH 800 ${order("Tap Basin Single","KSH 800")}</div>
+    <div class="product">Water Heater 50L – KSH 9,500 ${order("Water Heater 50L","KSH 9,500")}</div>
+    <div class="product">Septic Tank 3000L – KSH 23,000 ${order("Septic Tank 3000L","KSH 23,000")}</div>
+    <div class="product">Hammer Claw 16oz – KSH 350 ${order("Hammer Claw 16oz","KSH 350")}</div>
+    <div class="product">Screwdriver Set 10pcs – KSH 800 ${order("Screwdriver Set 10pcs","KSH 800")}</div>
+    <div class="product">Pliers Combination – KSH 250 ${order("Pliers Combination","KSH 250")}</div>
+    <div class="product">Tape Measure 5m – KSH 150 ${order("Tape Measure 5m","KSH 150")}</div>
+    <div class="product">Spirit Level 600mm – KSH 550 ${order("Spirit Level 600mm","KSH 550")}</div>
+    <div class="product">Wheelbarrow Standard – KSH 3,500 ${order("Wheelbarrow Standard","KSH 3,500")}</div>
+    <div class="product">Shovel Round Mouth – KSH 350 ${order("Shovel Round Mouth","KSH 350")}</div>
+    <div class="product">Pickaxe Chisel Point – KSH 450 ${order("Pickaxe Chisel Point","KSH 450")}</div>
+    <div class="product">Trowel Bricklaying – KSH 250 ${order("Trowel Bricklaying","KSH 250")}</div>
+    <div class="product">Ladder Aluminium 6ft – KSH 3,500 ${order("Ladder Aluminium 6ft","KSH 3,500")}</div>
+    <div class="product">Angle Grinder 850W – KSH 6,000 ${order("Angle Grinder 850W","KSH 6,000")}</div>
+    <div class="product">Cordless Drill 18V – KSH 9,500 ${order("Cordless Drill 18V","KSH 9,500")}</div>
+    <div class="product">Chainsaw Petrol 45cc – KSH 23,000 ${order("Chainsaw Petrol 45cc","KSH 23,000")}</div>
+    <div class="product">Circular Saw 1200W – KSH 9,500 ${order("Circular Saw 1200W","KSH 9,500")}</div>
+    <div class="product">Bench Grinder 150W – KSH 6,500 ${order("Bench Grinder 150W","KSH 6,500")}</div>`;
+  }
+
+  if(cat==="roofing"){
+    t.innerText="Roofing Material";
+    g.innerHTML=`
+    <div class="product">Deformed Bar 8mm – KSH 550 ${order("Deformed Bar 8mm","KSH 550")}</div>
+    <div class="product">Deformed Bar 10mm – KSH 800 ${order("Deformed Bar 10mm","KSH 800")}</div>
+    <div class="product">Deformed Bar 12mm – KSH 1,050 ${order("Deformed Bar 12mm","KSH 1,050")}</div>
+    <div class="product">MDF Board 8×4 ft – KSH 2,400 ${order("MDF Board 8x4 ft","KSH 2,400")}</div>
+    <div class="product">Laminated Door Standard – KSH 8,500 ${order("Laminated Door Standard","KSH 8,500")}</div>
+    <div class="product">Ceramic Tiles 30×30 cm – KSH 750 / sq.m ${order("Ceramic Tiles 30x30 cm","KSH 750 per sq.m")}</div>
+    <div class="product">Dumuzas Iron Sheet Gauge 30 (RWL) – KSH 900 ${order("Dumuzas Iron Sheet RWL","KSH 900")}</div>
+    <div class="product">Dumuzas Iron Sheet Gauge 30 (Corrugated) – KSH 900 ${order("Dumuzas Iron Sheet Corrugated","KSH 900")}</div>
+    <div class="product">Mabati Rejects (Ordinary) – KSH 150 per metre ${order("Mabati Rejects","KSH 150 per metre")}</div>
+    <div class="product">Box Profile – KSH 200 per metre ${order("Box Profile","KSH 200 per metre")}</div>`;
+  }
+
   if(cat==="power"){
     t.innerText="Power Tools";
     g.innerHTML=`
-    <div class="product">Angle Grinder – KSH 10,000 ${order("Angle Grinder","KSH 10,000")}</div>
-    <div class="product">Cordless Drill – KSH 9,500 ${order("Cordless Drill","KSH 9,500")}</div>
-    <div class="product">Circular Saw – KSH 6,000 ${order("Circular Saw","KSH 6,000")}</div>`;
+    <div class="product">Angle Grinder 3000W – KSH 10,000 ${order("Angle Grinder 3000W","KSH 10,000")}</div>
+    <div class="product">12V Li-ion Cordless Drill 20N – KSH 4,000 ${order("12V Li-ion Cordless Drill 20N","KSH 4,000")}</div>
+    <div class="product">2 pcs Dry Diamond Disc 4.5″ – KSH 4,500 ${order("Dry Diamond Disc 4.5 inch","KSH 4,500")}</div>
+    <div class="product">Air Spray Gun 400cc – KSH 1,700 ${order("Air Spray Gun 400cc","KSH 1,700")}</div>
+    <div class="product">Demolishing Breaker 1700W – KSH 24,500 ${order("Demolishing Breaker 1700W","KSH 24,500")}</div>
+    <div class="product">Circular Saw – KSH 6,000 ${order("Circular Saw","KSH 6,000")}</div>
+    <div class="product">Inovia 3.2mm Welding Rods – KSH 900 ${order("Inovia Welding Rods 3.2mm","KSH 900")}</div>
+    <div class="product">Inovia Angle Grinder 9″ – KSH 6,500 ${order("Inovia Angle Grinder 9 inch","KSH 6,500")}</div>
+    <div class="product">Inovia Door Closer – KSH 2,000 ${order("Inovia Door Closer","KSH 2,000")}</div>
+    <div class="product">Bosch Grinder – KSH 10,000 ${order("Bosch Grinder","KSH 10,000")}</div>`;
+  }
+
+  if(cat==="fencing"){
+    t.innerText="Fencing Materials";
+    g.innerHTML=`
+    <div class="product">Plastic Poles 3×7 ft – KSH 750 ${order("Plastic Poles 3x7 ft","KSH 750")}</div>
+    <div class="product">Plastic Poles 3×8 ft – KSH 850 ${order("Plastic Poles 3x8 ft","KSH 850")}</div>
+    <div class="product">Plastic Poles 3×10 ft – KSH 900 ${order("Plastic Poles 3x10 ft","KSH 900")}</div>
+    <div class="product">Plastic Poles 4×7 ft – KSH 1,200 ${order("Plastic Poles 4x7 ft","KSH 1,200")}</div>
+    <div class="product">Plastic Poles 4×8 ft – KSH 1,400 ${order("Plastic Poles 4x8 ft","KSH 1,400")}</div>
+    <div class="product">Plastic Poles 4×10 ft – KSH 1,550 ${order("Plastic Poles 4x10 ft","KSH 1,550")}</div>
+    <div class="product">Barbed Wire 240 metres – KSH 1,900 ${order("Barbed Wire 240 metres","KSH 1,900")}</div>
+    <div class="product">Barbed Wire 610 metres – KSH 3,400 ${order("Barbed Wire 610 metres","KSH 3,400")}</div>
+    <div class="product">Barbed Wire 610 metres (Heavy) – KSH 4,200 ${order("Barbed Wire 610 metres Heavy","KSH 4,200")}</div>
+    <div class="product">Chain Link 4 ft – KSH 3,500 ${order("Chain Link 4 ft","KSH 3,500")}</div>
+    <div class="product">Chain Link 5 ft – KSH 4,500 ${order("Chain Link 5 ft","KSH 4,500")}</div>
+    <div class="product">Chain Link 6 ft – KSH 5,000 ${order("Chain Link 6 ft","KSH 5,000")}</div>
+    <div class="product">Chain Link 7 ft – KSH 6,000 ${order("Chain Link 7 ft","KSH 6,000")}</div>
+    <div class="product">Chain Link 8 ft – KSH 8,000 ${order("Chain Link 8 ft","KSH 8,000")}</div>
+    <div class="product">Fencing Pole 7 ft – KSH 400 ${order("Fencing Pole 7 ft","KSH 400")}</div>
+    <div class="product">Fencing Pole 8 ft – KSH 450 ${order("Fencing Pole 8 ft","KSH 450")}</div>
+    <div class="product">Fencing Pole 9 ft – KSH 500 ${order("Fencing Pole 9 ft","KSH 500")}</div>
+    <div class="product">Fencing Pole 10 ft – KSH 600 ${order("Fencing Pole 10 ft","KSH 600")}</div>`;
   }
 }
 </script>
